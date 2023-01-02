@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { format } from "date-fns";
 import { useDispatch } from "react-redux";
-import { startHomeAction } from "../actions/homeAction";
 import StudentScaling from "./StudentScaling";
 import "../style.css";
 import thumb from "../thumb.png";
@@ -13,10 +12,6 @@ const StudentResponse = (props) => {
   const studentName = props.match.params.name;
   const [ratedQuestions, setRatedQuestions] = useState([]);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(startHomeAction(false));
-  }, [dispatch]);
 
   useEffect(() => {
     dispatch(startGetStudentRatedQuestions(studentId, reDirect));

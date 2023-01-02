@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { startHomeAction } from "../actions/homeAction";
+import { Link } from "react-router-dom";
 import { startLoginUser } from "../actions/userAction";
+import ParticlesBg from "particles-bg";
+import homepic3 from "../home3.png";
 
 const UserLogin = (props) => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  useEffect(() => {
-    dispatch(startHomeAction(false));
-  }, [dispatch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,6 +19,7 @@ const UserLogin = (props) => {
       };
       dispatch(startLoginUser(formData, reDirect));
       function reDirect(user) {
+        localStorage.setItem("User_in", "user is logged in");
         if (user.role === "admin") {
           props.history.push(`/admin/${user._id}/${user.userName}/dashboard`);
         } else {
@@ -28,11 +27,6 @@ const UserLogin = (props) => {
         }
       }
     }
-  };
-
-  const handleCancel = () => {
-    dispatch(startHomeAction(true));
-    props.history.push("/");
   };
 
   const handleChange = (e) => {
@@ -47,10 +41,37 @@ const UserLogin = (props) => {
 
   return (
     <>
-      <h1 style={{ textAlign: "center" }}>Question Manager App</h1>
-      <hr />
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        <ParticlesBg type="square" bg={true} />
+        {/* ball, circle, cobweb, square, fountain, random */}
+
+        <img
+          style={{ marginLeft: "1.5rem", marginTop: "0.9rem" }}
+          src={homepic3}
+          height={45}
+          width={55}
+          alt="netwrok error"
+        />
+
+        <h1 style={{ letterSpacing: "1rem", marginLeft: "26.3rem" }}>
+          Question App
+          <Link
+            to="/user/register"
+            style={{
+              fontSize: "17px",
+              color: "purple",
+              marginLeft: "21.5rem",
+              letterSpacing: "0.02rem",
+            }}
+          >
+            Registration
+          </Link>
+        </h1>
+      </div>
+      <hr style={{ marginTop: "-1rem" }} />
       <br />
-      <div className="box1 center">
+
+      <div className="log boxshadow" style={{ marginTop: "2.5rem" }}>
         <h1> Login Here </h1>
         <form onSubmit={handleSubmit}>
           <input
@@ -62,9 +83,9 @@ const UserLogin = (props) => {
             placeholder="Enter Your Mail"
           />
           <br />
-          <br />
           <input
             className="inputstyle"
+            style={{ marginTop: "2rem" }}
             type="password"
             name="password"
             value={password}
@@ -72,12 +93,13 @@ const UserLogin = (props) => {
             placeholder="Enter Your Password"
           />
           <br />
-          <br />
-          <input className="regcolor1" type="submit" value="Login" />
-          &nbsp;&nbsp;&nbsp;
-          <button className="regcolor2" onClick={handleCancel}>
-            Cancel
-          </button>
+
+          <input
+            style={{ marginTop: "2rem", width: "10%" }}
+            className="regcolor1"
+            type="submit"
+            value="Login"
+          />
         </form>
       </div>
     </>

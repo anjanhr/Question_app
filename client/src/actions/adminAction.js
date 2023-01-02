@@ -1,4 +1,5 @@
 import axios from "axios";
+import cogoToast from "cogo-toast";
 
 export const startGetAdminQuestion = (reDirect) => {
   return (dispatch) => {
@@ -10,15 +11,15 @@ export const startGetAdminQuestion = (reDirect) => {
       })
       .then((response) => {
         if (response.data.error) {
-          alert(response.data.error.message); // token altered
+          cogoToast.error(response.data.error.message); // token altered
         } else if (response.data.notice) {
-          alert(response.data.notice); // token not given
+          cogoToast.error(response.data.notice); // token not given
         } else {
           dispatch(getAdminQuestion(response.data));
         }
       })
       .catch((error) => {
-        alert(error.message);
+        cogoToast.error(error.message);
       });
   };
 };
@@ -40,15 +41,15 @@ export const startGetFeedBackResponses = (questionId, reDirect) => {
       })
       .then((response) => {
         if (response.data.error) {
-          alert(response.data.error.message); // token altered
+          cogoToast.error(response.data.error.message); // token altered
         } else if (response.data.notice) {
-          alert(response.data.notice); // token not given
+          cogoToast.error(response.data.notice); // token not given
         } else {
           reDirect(response.data);
         }
       })
       .catch((error) => {
-        alert(error.message);
+        cogoToast.error(error.message);
       });
   };
 };
@@ -63,15 +64,15 @@ export const startAnswerQuestion = (qtnId, formData, reDirect) => {
       })
       .then((response) => {
         if (response.data.error) {
-          alert(response.data.error.message); // token altered
+          cogoToast.error(response.data.error.message); // token altered
         } else if (response.data.notice) {
-          alert(response.data.notice); // token not given
+          cogoToast.error(response.data.notice); // token not given
         } else {
           reDirect();
         }
       })
       .catch((error) => {
-        alert(error.message);
+        cogoToast.error(error.message);
       });
   };
 };
@@ -86,14 +87,14 @@ export const startPutQuestionRating = (qtnId, responses) => {
       })
       .then((response) => {
         if (response.data.error) {
-          alert(response.data.error.message); // token altered
+          cogoToast.error(response.data.error.message); // token altered
         } else if (response.data.notice) {
-          alert(response.data.notice); // token not given
+          cogoToast.error(response.data.notice); // token not given
         } else {
         }
       })
       .catch((error) => {
-        alert(error.message);
+        cogoToast.error(error.message);
       });
   };
 };

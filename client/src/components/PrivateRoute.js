@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
+import cogoToast from "cogo-toast";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   return (
@@ -10,7 +11,9 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
           <Component {...props} />
         ) : (
           <>
-            {alert("You need to Login first, before accessing this Route")}
+            {cogoToast.error(
+              "You need to Login first, before accessing this Route"
+            )}
             <Redirect
               to={{
                 pathname: "/",

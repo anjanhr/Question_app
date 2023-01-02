@@ -1,16 +1,11 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { startHomeAction } from "../actions/homeAction";
 import { startGetAdminQuestion } from "../actions/adminAction";
 import NavBar from "./NavBar";
 import AdminQuestions from "./AdminQuestions";
 
 const AdminDashboard = (props) => {
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(startHomeAction(false));
-  }, [dispatch]);
 
   useEffect(() => {
     dispatch(startGetAdminQuestion());

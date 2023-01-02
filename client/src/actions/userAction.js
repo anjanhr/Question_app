@@ -1,15 +1,17 @@
 import axios from "axios";
+import cogoToast from "cogo-toast";
 // http://localhost:3000
 
-export const startRegisterUser = (formData) => {
+export const startRegisterUser = (formData, reDirect) => {
   return (dispatch, getState) => {
     axios
       .post("/api/user/register", formData)
       .then((response) => {
-        alert("Thanks for Registering");
+        cogoToast.success("Thanks for Registering");
+        reDirect();
       })
       .catch((error) => {
-        alert(error.message); // server related error
+        cogoToast.error(error.message); // server related error
       });
   };
 };
@@ -20,7 +22,7 @@ export const startLoginUser = (formData, reDirect) => {
       .post("/api/user/login", formData)
       .then((response) => {
         if (response.data.error) {
-          alert(response.data.error); // invalid email or password
+          cogoToast.error(response.data.error); // invalid email or password
         } else {
           // generated token comes as -> response.data.token
           const token = response.data.token.split(" ")[1];
@@ -33,20 +35,20 @@ export const startLoginUser = (formData, reDirect) => {
             })
             .then((response) => {
               if (response.data.error) {
-                alert(response.data.error.message); // token altered
+                cogoToast.error(response.data.error.message); // token altered
               } else if (response.data.notice) {
-                alert(response.data.notice); // token not given
+                cogoToast.error(response.data.notice); // token not given
               } else {
                 reDirect(response.data); // user data
               }
             })
             .catch((error) => {
-              alert(error.message); // server error
+              cogoToast.error(error.message); // server error
             });
         }
       })
       .catch((error) => {
-        alert(error.message); //server related error
+        cogoToast.error(error.message); //server related error
       });
   };
 };
@@ -61,15 +63,15 @@ export const startGetUserAccount = () => {
       })
       .then((response) => {
         if (response.data.error) {
-          alert(response.data.error.message); // token altered
+          cogoToast.error(response.data.error.message); // token altered
         } else if (response.data.notice) {
-          alert(response.data.notice); // token not given
+          cogoToast.error(response.data.notice); // token not given
         } else {
           dispatch(getUserAccount(response.data)); // user data
         }
       })
       .catch((error) => {
-        alert(error.message); // server error
+        cogoToast.error(error.message); // server error
       });
   };
 };

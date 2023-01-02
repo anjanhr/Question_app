@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { startHomeAction } from "../actions/homeAction";
+import cogoToast from "cogo-toast";
 import {
   startGetStudentQuestion,
   startPostQuestion,
@@ -15,10 +15,6 @@ const StudentDashboard = (props) => {
   const studentName = props.match.params.name;
   const [body, setBody] = useState("");
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(startHomeAction(false));
-  }, [dispatch]);
 
   useEffect(() => {
     dispatch(startGetStudentQuestion(studentId));
@@ -42,7 +38,7 @@ const StudentDashboard = (props) => {
         dispatch(startGetStudentQuestion(studentId));
       }
     } else {
-      alert("Already Liked It");
+      cogoToast.error("Already Liked It");
     }
   };
 

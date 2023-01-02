@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { startHomeAction } from "../actions/homeAction";
 import "../style2.css";
 import { startGetUserAccount } from "../actions/userAction";
 import stunavicon from "../stunavicon.png";
@@ -20,7 +19,6 @@ const NavBar = (props) => {
 
   const handleLogout = () => {
     localStorage.clear();
-    dispatch(startHomeAction(true));
     props.history.push("/");
   };
 

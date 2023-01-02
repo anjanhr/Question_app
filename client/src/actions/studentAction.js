@@ -1,4 +1,5 @@
 import axios from "axios";
+import cogoToast from "cogo-toast";
 
 export const startGetStudentQuestion = (studentId) => {
   return (dispatch) => {
@@ -10,15 +11,15 @@ export const startGetStudentQuestion = (studentId) => {
       })
       .then((response) => {
         if (response.data.error) {
-          alert(response.data.error.message); // token altered
+          cogoToast.error(response.data.error.message); // token altered
         } else if (response.data.notice) {
-          alert(response.data.notice); // token not given
+          cogoToast.error(response.data.notice); // token not given
         } else {
           dispatch(getStudentQuestion(response.data));
         }
       })
       .catch((error) => {
-        alert(error.message);
+        cogoToast.error(error.message);
       });
   };
 };
@@ -40,15 +41,15 @@ export const startGetStudentAllQuestions = (studentId, reDirect) => {
       })
       .then((response) => {
         if (response.data.error) {
-          alert(response.data.error.message); // token altered
+          cogoToast.error(response.data.error.message); // token altered
         } else if (response.data.notice) {
-          alert(response.data.notice); // token not given
+          cogoToast.error(response.data.notice); // token not given
         } else {
           reDirect(response.data);
         }
       })
       .catch((error) => {
-        alert(error.message);
+        cogoToast.error(error.message);
       });
   };
 };
@@ -63,15 +64,15 @@ export const startGetStudentRatedQuestions = (studentId, reDirect) => {
       })
       .then((response) => {
         if (response.data.error) {
-          alert(response.data.error.message); // token altered
+          cogoToast.error(response.data.error.message); // token altered
         } else if (response.data.notice) {
-          alert(response.data.notice); // token not given
+          cogoToast.error(response.data.notice); // token not given
         } else {
           reDirect(response.data);
         }
       })
       .catch((error) => {
-        alert(error.message);
+        cogoToast.error(error.message);
       });
   };
 };
@@ -86,15 +87,15 @@ export const startPostQuestion = (formData, reDirect) => {
       })
       .then((response) => {
         if (response.data.error) {
-          alert(response.data.error.message); // token altered
+          cogoToast.error(response.data.error.message); // token altered
         } else if (response.data.notice) {
-          alert(response.data.notice); // token not given
+          cogoToast.error(response.data.notice); // token not given
         } else {
           reDirect();
         }
       })
       .catch((error) => {
-        alert(error.message);
+        cogoToast.error(error.message);
       });
   };
 };
@@ -109,15 +110,15 @@ export const startPostRatingQuestion = (qtnid, ratingData, reDirect) => {
       })
       .then((response) => {
         if (response.data.error) {
-          alert(response.data.error.message); // token altered
+          cogoToast.error(response.data.error.message); // token altered
         } else if (response.data.notice) {
-          alert(response.data.notice); // token not given
+          cogoToast.error(response.data.notice); // token not given
         } else {
           reDirect();
         }
       })
       .catch((error) => {
-        alert(error.message);
+        cogoToast.error(error.message);
       });
   };
 };
@@ -132,15 +133,15 @@ export const startPostStudentScaleQuestion = (qtnId, scalingData, reDirect) => {
       })
       .then((response) => {
         if (response.data.error) {
-          alert(response.data.error.message); // token altered
+          cogoToast.error(response.data.error.message); // token altered
         } else if (response.data.notice) {
-          alert(response.data.notice); // token not given
+          cogoToast.error(response.data.notice); // token not given
         } else {
           reDirect();
         }
       })
       .catch((error) => {
-        alert(error.message);
+        cogoToast.error(error.message);
       });
   };
 };

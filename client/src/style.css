@@ -10,6 +10,14 @@
   border-radius: 8px;
 }
 
+.reg {
+  text-align: center;
+}
+
+.log {
+  text-align: center;
+}
+
 .regcolor1 {
   border-color: darkgray;
   background: #09790f;
