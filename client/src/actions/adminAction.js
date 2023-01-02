@@ -3,7 +3,7 @@ import axios from "axios";
 export const startGetAdminQuestion = (reDirect) => {
   return (dispatch) => {
     axios
-      .get("http://localhost:3090/api/admin/questions", {
+      .get("/api/admin/questions", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("myToken")}`,
         },
@@ -33,7 +33,7 @@ const getAdminQuestion = (questionData) => {
 export const startGetFeedBackResponses = (questionId, reDirect) => {
   return (dispatch) => {
     axios
-      .get(`http://localhost:3090/api/questions/${questionId}/feedback`, {
+      .get(`/api/questions/${questionId}/feedback`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("myToken")}`,
         },
@@ -56,15 +56,11 @@ export const startGetFeedBackResponses = (questionId, reDirect) => {
 export const startAnswerQuestion = (qtnId, formData, reDirect) => {
   return () => {
     axios
-      .post(
-        `http://localhost:3090/api/questions/${qtnId}/answertype`,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("myToken")}`,
-          },
-        }
-      )
+      .post(`/api/questions/${qtnId}/answertype`, formData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("myToken")}`,
+        },
+      })
       .then((response) => {
         if (response.data.error) {
           alert(response.data.error.message); // token altered
@@ -83,7 +79,7 @@ export const startAnswerQuestion = (qtnId, formData, reDirect) => {
 export const startPutQuestionRating = (qtnId, responses) => {
   return () => {
     axios
-      .put(`http://localhost:3090/api/questions/${qtnId}/rating`, responses, {
+      .put(`/api/questions/${qtnId}/rating`, responses, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("myToken")}`,
         },

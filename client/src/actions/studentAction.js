@@ -3,7 +3,7 @@ import axios from "axios";
 export const startGetStudentQuestion = (studentId) => {
   return (dispatch) => {
     axios
-      .get(`http://localhost:3090/api/student/${studentId}/questions`, {
+      .get(`/api/student/${studentId}/questions`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("myToken")}`,
         },
@@ -33,7 +33,7 @@ const getStudentQuestion = (questionData) => {
 export const startGetStudentAllQuestions = (studentId, reDirect) => {
   return (dispatch) => {
     axios
-      .get(`http://localhost:3090/api/student/${studentId}/all/questions`, {
+      .get(`/api/student/${studentId}/all/questions`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("myToken")}`,
         },
@@ -56,7 +56,7 @@ export const startGetStudentAllQuestions = (studentId, reDirect) => {
 export const startGetStudentRatedQuestions = (studentId, reDirect) => {
   return (dispatch) => {
     axios
-      .get(`http://localhost:3090/api/student/${studentId}/questions/rated`, {
+      .get(`/api/student/${studentId}/questions/rated`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("myToken")}`,
         },
@@ -79,7 +79,7 @@ export const startGetStudentRatedQuestions = (studentId, reDirect) => {
 export const startPostQuestion = (formData, reDirect) => {
   return (dispatch) => {
     axios
-      .post("http://localhost:3090/api/student/questions", formData, {
+      .post("/api/student/questions", formData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("myToken")}`,
         },
@@ -102,15 +102,11 @@ export const startPostQuestion = (formData, reDirect) => {
 export const startPostRatingQuestion = (qtnid, ratingData, reDirect) => {
   return (dispatch) => {
     axios
-      .post(
-        `http://localhost:3090/api/student/questions/${qtnid}`,
-        ratingData,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("myToken")}`,
-          },
-        }
-      )
+      .post(`/api/student/questions/${qtnid}`, ratingData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("myToken")}`,
+        },
+      })
       .then((response) => {
         if (response.data.error) {
           alert(response.data.error.message); // token altered
@@ -129,15 +125,11 @@ export const startPostRatingQuestion = (qtnid, ratingData, reDirect) => {
 export const startPostStudentScaleQuestion = (qtnId, scalingData, reDirect) => {
   return (dispatch) => {
     axios
-      .post(
-        `http://localhost:3090/api/student/questions/${qtnId}/scaling`,
-        scalingData,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("myToken")}`,
-          },
-        }
-      )
+      .post(`/api/student/questions/${qtnId}/scaling`, scalingData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("myToken")}`,
+        },
+      })
       .then((response) => {
         if (response.data.error) {
           alert(response.data.error.message); // token altered

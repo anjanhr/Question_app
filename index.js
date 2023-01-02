@@ -1,17 +1,36 @@
 const express = require("express");
 const app = express();
 require("dotenv").config();
-const port = 3090;
+const PORT = process.env.PORT || 4000;
 const router = require("./config/routes");
-const configureDb = require("./config/database");
+const connectDB = require("./config/database");
 const cors = require("cors");
+// const expressfileupload = require("express-fileupload"); // used before aws s3 request only
+const bodyParser = require("body-parser");
+const path = require("path");
 
-configureDb();
+// myDB connection
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log("listening for requests");
+  });
+});
 
 app.use(cors());
 app.use(express.json());
+// app.use(expressfileupload());
 app.use(router);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.listen(port, () => {
-  console.log(`Server is listening in port: ${port}`);
+// cyclic connection
+app.use(express.static(path.join(__dirname, "./client/build")));
+
+app.get("*", function (_, res) {
+  res.sendFile(
+    path.join(__dirname, "./client/build/index.html"),
+    function (err) {
+      res.send(err);
+    }
+  );
 });

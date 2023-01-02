@@ -22,7 +22,7 @@ const StudentDashboard = (props) => {
 
   useEffect(() => {
     dispatch(startGetStudentQuestion(studentId));
-  }, [dispatch]);
+  }, [dispatch, studentId]);
 
   const studentQuestionsData = useSelector((state) => {
     return state.studentQuestionsData;

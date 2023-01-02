@@ -1,9 +1,10 @@
 import axios from "axios";
+// http://localhost:3000
 
 export const startRegisterUser = (formData) => {
   return (dispatch, getState) => {
     axios
-      .post("http://localhost:3090/api/user/register", formData)
+      .post("/api/user/register", formData)
       .then((response) => {
         alert("Thanks for Registering");
       })
@@ -16,7 +17,7 @@ export const startRegisterUser = (formData) => {
 export const startLoginUser = (formData, reDirect) => {
   return (dispatch) => {
     axios
-      .post("http://localhost:3090/api/user/login", formData)
+      .post("/api/user/login", formData)
       .then((response) => {
         if (response.data.error) {
           alert(response.data.error); // invalid email or password
@@ -25,7 +26,7 @@ export const startLoginUser = (formData, reDirect) => {
           const token = response.data.token.split(" ")[1];
           localStorage.setItem("myToken", token);
           axios
-            .get(`http://localhost:3090/api/user/account`, {
+            .get(`/api/user/account`, {
               headers: {
                 Authorization: response.data.token,
               },
@@ -53,7 +54,7 @@ export const startLoginUser = (formData, reDirect) => {
 export const startGetUserAccount = () => {
   return (dispatch) => {
     axios
-      .get(`http://localhost:3090/api/user/account`, {
+      .get(`/api/user/account`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("myToken")}`,
         },
