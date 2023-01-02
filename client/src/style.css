@@ -1,0 +1,271 @@
+.center {
+  border: 4px solid #8f8f8f;
+  text-align: center;
+}
+
+.inputstyle {
+  border-color: black;
+  background-color: rgb(251, 251, 251);
+  padding: 10px 42px;
+  border-radius: 8px;
+}
+
+.regcolor1 {
+  border-color: darkgray;
+  background: #09790f;
+  color: #eee;
+  padding: 6px 12px;
+  letter-spacing: 0.2em;
+  font-family: Calisto MT;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.regcolor2 {
+  border-color: darkgray;
+  background: #bc2525;
+  letter-spacing: 0.2em;
+  color: #eee;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-family: Calisto MT;
+  cursor: pointer;
+}
+
+.button1 {
+  border-color: darkgray;
+  background: #0a2157;
+  color: #eee;
+  font-size: 14px;
+  padding: 5px 15px;
+  font-family: Cursive;
+  border-radius: 13px;
+  cursor: pointer;
+}
+
+.logincolor2 {
+  border-color: darkgray;
+  background: #ef4545;
+  color: #eee;
+  padding: 5px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.logincolor3 {
+  border-color: darkgray;
+  background: #09790f;
+  color: #eee;
+  padding: 5px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.logincolor4 {
+  border-color: darkgray;
+  background: #460a64;
+  color: #eee;
+  padding: 5px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.logincolor5 {
+  border-color: darkgray;
+  background: #0e8614;
+  color: #eee;
+  padding: 5px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.logincolor6 {
+  border-color: darkgray;
+  background: #bc2525;
+  color: #eee;
+  padding: 5px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.box {
+  max-width: 300px;
+  margin: auto;
+  padding: 3rem 8rem;
+  position: relative;
+  background: #d1d3d1fb;
+  border-radius: 15px;
+}
+
+.box1 {
+  max-width: 500px;
+  margin: auto;
+  padding: 3rem 5rem;
+  position: relative;
+  background: #d8dadafb;
+  border-radius: 15px;
+}
+
+.box2 {
+  margin: auto;
+  padding: 2rem 15rem;
+  position: relative;
+  background: #e8e6e6fb;
+  border-radius: 15px;
+}
+
+.box3 {
+  max-width: 400px;
+  padding: 1.5rem 3rem;
+  background: #b6dab6fb;
+  border-radius: 15px;
+  font-family: Calisto MT;
+  font-size: large;
+}
+
+.heading {
+  color: rgb(23, 27, 7);
+  font-size: 28px;
+  font-family: papyrus;
+}
+
+.texting {
+  background-color: rgb(234, 239, 239);
+  border: solid rgb(86, 83, 87);
+  border-width: 2px;
+  border-radius: 15px;
+  border-left-width: 200px;
+  border-right-width: 200px;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.flex-child {
+  flex: 1;
+  border: 2px solid rgb(95, 17, 121);
+  padding: 40px;
+  margin: 5px;
+  border-radius: 15px;
+  font-size: xx-small;
+}
+
+.flex-child:first-child {
+  margin-right: 20px;
+}
+
+.namebutton {
+  margin-left: 6rem;
+  font-size: 14.5px;
+  font-family: Book Antiqua;
+  border: 2.5px solid rgb(146, 146, 186);
+  border-radius: 10px;
+  padding: 3px 12px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+.namebutton2 {
+  margin-left: 13rem;
+  font-size: 14.5px;
+  font-family: Book Antiqua;
+  border: 2.5px solid rgb(234, 240, 44);
+  border-radius: 10px;
+  padding: 3px 12px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+.namebutton3 {
+  margin-left: 8rem;
+  border: 2.5px solid rgb(154, 141, 136);
+  border-radius: 10px;
+  padding: 3px 12px;
+  background-color: white;
+}
+
+.namebutton4 {
+  margin-left: 6rem;
+  font-size: 14.5px;
+  font-family: Book Antiqua;
+  border: 2.5px solid rgb(146, 146, 186);
+  border-radius: 10px;
+  padding: 3px 12px;
+  background-color: white;
+  color: black;
+  cursor: not-allowed;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.modal {
+  position: fixed;
+  z-index: 20;
+  background: #fff;
+  width: 650px;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.modal_header {
+  background-color: rgb(135, 161, 152);
+  padding: 1px 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.close_button {
+  border: none;
+  background: transparent;
+  padding: 10px;
+  cursor: pointer;
+  color: rgb(150, 2, 2);
+  font-size: 36px;
+}
+
+.list {
+  font-size: 20px;
+  font-family: "Book Antiqua";
+}
+
+.overlay2 {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.modal2 {
+  position: fixed;
+  width: 130px;
+  top: 50%;
+  left: 15%;
+  transform: translateX(-50%) translateY(-50%);
+  background-color: rgb(175, 199, 190);
+  color: rgb(0, 0, 0);
+}
+
+.modal_header2 {
+  background-color: rgb(255, 255, 255);
+  padding: 1px 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list2 {
+  font-size: 20px;
+  font-family: "Book Antiqua";
+}
