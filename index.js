@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 4030;
 const router = require("./config/routes");
 const connectDB = require("./config/database");
 const cors = require("cors");
-// const expressfileupload = require("express-fileupload"); // used before aws s3 request only
+// const expressfileupload = require("express-fileupload"); // used before aws s3
 const bodyParser = require("body-parser");
 const path = require("path");
 
