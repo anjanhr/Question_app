@@ -25,7 +25,7 @@ adminController.list = (request, response) => {
       ]);
     })
     .catch((error) => {
-      response.json(error);
+      response.json({ mainError: error.message });
     });
 };
 
@@ -40,11 +40,11 @@ adminController.createAnswer = (request, response) => {
       response.json(questions);
     })
     .catch((error) => {
-      response.json(error);
+      response.json({ mainError: error.message });
     });
 };
 
-adminController.updateRating = (request, response) => {
+adminController.updateResponse = (request, response) => {
   const qtnId = request.params.id;
   const body = request.body;
   Question.findByIdAndUpdate(
@@ -56,7 +56,7 @@ adminController.updateRating = (request, response) => {
       response.json(questions);
     })
     .catch((error) => {
-      response.json(error);
+      response.json({ mainError: error.message });
     });
 };
 
@@ -67,7 +67,7 @@ adminController.listFeedbackResponse = (request, response) => {
       response.json(questions);
     })
     .catch((error) => {
-      response.json(error);
+      response.json({ mainError: error.message });
     });
 };
 

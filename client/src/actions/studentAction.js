@@ -14,6 +14,8 @@ export const startGetStudentQuestion = (studentId) => {
           cogoToast.error(response.data.error.message); // token altered
         } else if (response.data.notice) {
           cogoToast.error(response.data.notice); // token not given
+        } else if (response.data.mainError) {
+          cogoToast.error(response.data.mainError); // any error
         } else {
           dispatch(getStudentQuestion(response.data));
         }
@@ -44,6 +46,8 @@ export const startGetStudentAllQuestions = (studentId, reDirect) => {
           cogoToast.error(response.data.error.message); // token altered
         } else if (response.data.notice) {
           cogoToast.error(response.data.notice); // token not given
+        } else if (response.data.mainError) {
+          cogoToast.error(response.data.mainError); // any error
         } else {
           reDirect(response.data);
         }
@@ -67,6 +71,8 @@ export const startGetStudentRatedQuestions = (studentId, reDirect) => {
           cogoToast.error(response.data.error.message); // token altered
         } else if (response.data.notice) {
           cogoToast.error(response.data.notice); // token not given
+        } else if (response.data.mainError) {
+          cogoToast.error(response.data.mainError); // any error
         } else {
           reDirect(response.data);
         }
@@ -90,6 +96,8 @@ export const startPostQuestion = (formData, reDirect) => {
           cogoToast.error(response.data.error.message); // token altered
         } else if (response.data.notice) {
           cogoToast.error(response.data.notice); // token not given
+        } else if (response.data.mainError) {
+          cogoToast.error(response.data.mainError); // any error
         } else {
           reDirect();
         }
@@ -113,6 +121,8 @@ export const startPostRatingQuestion = (qtnid, ratingData, reDirect) => {
           cogoToast.error(response.data.error.message); // token altered
         } else if (response.data.notice) {
           cogoToast.error(response.data.notice); // token not given
+        } else if (response.data.mainError) {
+          cogoToast.error(response.data.mainError); // any error
         } else {
           reDirect();
         }
@@ -136,6 +146,8 @@ export const startPostStudentScaleQuestion = (qtnId, scalingData, reDirect) => {
           cogoToast.error(response.data.error.message); // token altered
         } else if (response.data.notice) {
           cogoToast.error(response.data.notice); // token not given
+        } else if (response.data.mainError) {
+          cogoToast.error(response.data.mainError); // any error
         } else {
           reDirect();
         }

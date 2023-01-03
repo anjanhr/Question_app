@@ -1,43 +1,53 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { startLoginUser } from "../actions/userAction";
 import ParticlesBg from "particles-bg";
 import homepic3 from "../home3.png";
+import { useFormik } from "formik";
+import * as yup from "yup";
 
 const UserLogin = (props) => {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const PASSWORD_REGEX = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (email) {
-      const formData = {
-        email: email,
-        password: password,
-      };
-      dispatch(startLoginUser(formData, reDirect));
-      function reDirect(user) {
-        localStorage.setItem("User_in", "user is logged in");
-        if (user.role === "admin") {
-          props.history.push(`/admin/${user._id}/${user.userName}/dashboard`);
-        } else {
-          props.history.push(`/student/${user._id}/${user.userName}/dashboard`);
-        }
+  const validationSchema = yup.object({
+    email: yup
+      .string()
+      .email("Please enter a valid email address")
+      .required()
+      .min(10, "Email is too Short!")
+      .max(30, "Email is too Long!"),
+    password: yup
+      .string()
+      .matches(PASSWORD_REGEX, "Please enter a strong password")
+      .required()
+      .min(10, "Password is too Short!")
+      .max(30, "Password is too Long!"),
+  });
+
+  const onSubmit = (values) => {
+    const { ...data } = values;
+    dispatch(startLoginUser(data, reDirect));
+    function reDirect(user) {
+      localStorage.setItem("User_in", "user is logged in");
+      if (user.role === "admin") {
+        props.history.push(`/admin/${user._id}/${user.userName}/dashboard`);
+      } else {
+        props.history.push(`/student/${user._id}/${user.userName}/dashboard`);
       }
     }
   };
 
-  const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    if (name === "email") {
-      setEmail(value);
-    } else if (name === "password") {
-      setPassword(value);
-    }
-  };
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validateOnBlur: true,
+    validationSchema: validationSchema,
+    onSubmit,
+  });
 
   return (
     <>
@@ -73,27 +83,47 @@ const UserLogin = (props) => {
 
       <div className="log boxshadow" style={{ marginTop: "2.5rem" }}>
         <h1> Login Here </h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={formik.handleSubmit}>
+          <label style={{ color: "red" }}>
+            {formik.touched.email && formik.errors.email ? (
+              <span>
+                {formik.errors.email} <br />
+              </span>
+            ) : (
+              ""
+            )}
+          </label>
           <input
+            style={{ marginTop: "1rem" }}
             className="inputstyle"
             type="text"
             name="email"
-            value={email}
-            onChange={handleChange}
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
             placeholder="Enter Your Mail"
           />
-          <br />
+          <br /> <br />
+          <label style={{ color: "red" }}>
+            {formik.touched.password && formik.errors.password ? (
+              <span>
+                {formik.errors.password} <br />
+              </span>
+            ) : (
+              ""
+            )}
+          </label>
           <input
             className="inputstyle"
-            style={{ marginTop: "2rem" }}
+            style={{ marginTop: "1rem", letterSpacing: "0.01rem" }}
             type="password"
             name="password"
-            value={password}
-            onChange={handleChange}
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
             placeholder="Enter Your Password"
           />
           <br />
-
           <input
             style={{ marginTop: "2rem", width: "10%" }}
             className="regcolor1"

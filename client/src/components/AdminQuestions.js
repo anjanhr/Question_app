@@ -8,7 +8,7 @@ import {
 import "../style.css";
 import thumb from "../thumb.png";
 import LikesHoverModal from "./LikesHoverModal";
-import { startPutQuestionRating } from "../actions/adminAction";
+import { startPutQuestionResponse } from "../actions/adminAction";
 import FeedBackViewModal from "./FeedBackViewModal";
 import { startGetFeedBackResponses } from "../actions/adminAction";
 
@@ -41,7 +41,7 @@ const AdminQuestions = (props) => {
     const responses = [];
 
     if (checked === false) {
-      dispatch(startPutQuestionRating(id, responses));
+      dispatch(startPutQuestionResponse(id, responses));
     }
 
     dispatch(startAnswerQuestion(id, formData, reDirect));

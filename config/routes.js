@@ -28,9 +28,9 @@ router.post(
   adminController.createAnswer
 );
 router.put(
-  "/api/questions/:id/rating",
+  "/api/questions/:id/response",
   authenticateUser,
-  adminController.updateRating
+  adminController.updateResponse
 );
 
 // student

@@ -25,7 +25,7 @@ studController.list = (request, response) => {
       ]);
     })
     .catch((error) => {
-      response.json(error);
+      response.json({ mainError: error.message });
     });
 };
 
@@ -37,7 +37,7 @@ studController.listStuAllQuestions = (request, response) => {
       response.json(questions);
     })
     .catch((error) => {
-      response.json(error);
+      response.json({ mainError: error.message });
     });
 };
 
@@ -51,7 +51,7 @@ studController.listStuRatedQuestions = (request, response) => {
       response.json(result);
     })
     .catch((error) => {
-      response.json(error);
+      response.json({ mainError: error.message });
     });
 };
 
@@ -65,7 +65,7 @@ studController.create = (request, response) => {
       response.json(questions);
     })
     .catch((error) => {
-      response.json(error);
+      response.json({ mainError: error.message });
     });
 };
 
@@ -80,7 +80,7 @@ studController.createRating = (request, response) => {
       response.json(questions);
     })
     .catch((error) => {
-      response.json(error);
+      response.json({ mainError: error.message });
     });
 };
 
@@ -95,7 +95,7 @@ studController.createScaling = (request, response) => {
       response.json(questions);
     })
     .catch((error) => {
-      response.json(error);
+      response.json({ mainError: error.message });
     });
 };
 

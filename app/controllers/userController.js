@@ -18,7 +18,11 @@ userController.register = (request, response) => {
           response.json(users);
         })
         .catch((error) => {
-          response.json(error.message);
+          if (error.message.includes("11000")) {
+            return response.json({ emailError: "Email already exists!" });
+          } else {
+            return response.json({ mainError: error.message });
+          }
         });
     });
   });
@@ -41,15 +45,15 @@ userController.login = (request, response) => {
           const token = jwt.sign(tokenData, tokenKey, {
             expiresIn: "2d",
           });
-          response.json({
+          return response.json({
             token: `Bearer ${token}`,
           });
         } else {
-          response.json({ error: "Invalid Email or Password" });
+          return response.json({ error: "Invalid Email or Password" });
         }
       });
     } else {
-      response.json({ error: "Invalid Email or Password" });
+      return response.json({ error: "Invalid Email or Password" });
     }
   });
 };

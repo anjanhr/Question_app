@@ -1,43 +1,56 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { startRegisterUser } from "../actions/userAction";
 import "../style.css";
 import ParticlesBg from "particles-bg";
 import homepic3 from "../home3.png";
+import { useFormik } from "formik";
+import * as yup from "yup";
 
 const UserRegister = (props) => {
   const dispatch = useDispatch();
-  const [userName, setUserName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const PASSWORD_REGEX = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (email) {
-      const formData = {
-        userName,
-        email,
-        password,
-      };
-      dispatch(startRegisterUser(formData, reDirect));
-      function reDirect() {
-        props.history.push("/");
-      }
+  const validationSchema = yup.object({
+    userName: yup
+      .string()
+      .min(10, "Name is too Short!")
+      .max(30, "Name is too Long!")
+      .required(),
+    email: yup
+      .string()
+      .email("Please enter a valid email address")
+      .required()
+      .min(10, "Email is too Short!")
+      .max(30, "Email is too Long!"),
+    password: yup
+      .string()
+      .matches(PASSWORD_REGEX, "Please enter a strong password")
+      .required()
+      .min(10, "Password is too Short!")
+      .max(30, "Password is too Long!"),
+  });
+
+  const onSubmit = (values) => {
+    const { ...data } = values;
+    dispatch(startRegisterUser(data, reDirect));
+    function reDirect() {
+      props.history.push("/");
+      formik.resetForm();
     }
   };
 
-  const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    if (name === "username") {
-      setUserName(value);
-    } else if (name === "email") {
-      setEmail(value);
-    } else if (name === "password") {
-      setPassword(value);
-    }
-  };
+  const formik = useFormik({
+    initialValues: {
+      userName: "",
+      email: "",
+      password: "",
+    },
+    validateOnBlur: true,
+    validationSchema: validationSchema,
+    onSubmit,
+  });
 
   return (
     <>
@@ -72,39 +85,67 @@ const UserRegister = (props) => {
 
       <div className="reg" style={{ marginTop: "4rem" }}>
         <h1> Register Here </h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={formik.handleSubmit}>
+          <label style={{ color: "red" }}>
+            {formik.touched.userName && formik.errors.userName ? (
+              <span>
+                {formik.errors.userName} <br />
+              </span>
+            ) : (
+              ""
+            )}
+          </label>
           <input
             className="inputstyle"
+            style={{ marginTop: "1rem", letterSpacing: "0.01rem" }}
             type="text"
-            name="username"
-            value={userName}
-            onChange={handleChange}
+            name="userName"
+            value={formik.values.userName}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
             placeholder="Enter Your Name"
           />
-
-          <br />
+          <br /> <br />
+          <label style={{ color: "red" }}>
+            {formik.touched.email && formik.errors.email ? (
+              <span>
+                {formik.errors.email} <br />
+              </span>
+            ) : (
+              ""
+            )}
+          </label>
           <input
             className="inputstyle"
-            style={{ marginTop: "2rem" }}
+            style={{ marginTop: "1rem" }}
             type="text"
             name="email"
-            value={email}
-            onChange={handleChange}
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
             placeholder="Enter Your Mail"
           />
-          <br />
-
+          <br /> <br />
+          <label style={{ color: "red" }}>
+            {formik.touched.password && formik.errors.password ? (
+              <span>
+                {formik.errors.password} <br />
+              </span>
+            ) : (
+              ""
+            )}
+          </label>
           <input
             className="inputstyle"
-            style={{ marginTop: "2rem" }}
+            style={{ marginTop: "1rem" }}
             type="password"
             name="password"
-            value={password}
-            onChange={handleChange}
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
             placeholder="Enter Your Password"
           />
           <br />
-
           <input
             style={{ marginTop: "2rem" }}
             className="regcolor1"

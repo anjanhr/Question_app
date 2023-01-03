@@ -14,6 +14,8 @@ export const startGetAdminQuestion = (reDirect) => {
           cogoToast.error(response.data.error.message); // token altered
         } else if (response.data.notice) {
           cogoToast.error(response.data.notice); // token not given
+        } else if (response.data.mainError) {
+          cogoToast.error(response.data.mainError); // any error
         } else {
           dispatch(getAdminQuestion(response.data));
         }
@@ -44,6 +46,8 @@ export const startGetFeedBackResponses = (questionId, reDirect) => {
           cogoToast.error(response.data.error.message); // token altered
         } else if (response.data.notice) {
           cogoToast.error(response.data.notice); // token not given
+        } else if (response.data.mainError) {
+          cogoToast.error(response.data.mainError); // any error
         } else {
           reDirect(response.data);
         }
@@ -67,6 +71,8 @@ export const startAnswerQuestion = (qtnId, formData, reDirect) => {
           cogoToast.error(response.data.error.message); // token altered
         } else if (response.data.notice) {
           cogoToast.error(response.data.notice); // token not given
+        } else if (response.data.mainError) {
+          cogoToast.error(response.data.mainError); // any error
         } else {
           reDirect();
         }
@@ -77,10 +83,10 @@ export const startAnswerQuestion = (qtnId, formData, reDirect) => {
   };
 };
 
-export const startPutQuestionRating = (qtnId, responses) => {
+export const startPutQuestionResponse = (qtnId, responses) => {
   return () => {
     axios
-      .put(`/api/questions/${qtnId}/rating`, responses, {
+      .put(`/api/questions/${qtnId}/response`, responses, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("myToken")}`,
         },
@@ -90,7 +96,8 @@ export const startPutQuestionRating = (qtnId, responses) => {
           cogoToast.error(response.data.error.message); // token altered
         } else if (response.data.notice) {
           cogoToast.error(response.data.notice); // token not given
-        } else {
+        } else if (response.data.mainError) {
+          cogoToast.error(response.data.mainError); // any error
         }
       })
       .catch((error) => {

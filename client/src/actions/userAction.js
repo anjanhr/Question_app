@@ -1,14 +1,20 @@
 import axios from "axios";
 import cogoToast from "cogo-toast";
-// http://localhost:3000
+// http://localhost:4000
 
 export const startRegisterUser = (formData, reDirect) => {
   return (dispatch, getState) => {
     axios
       .post("/api/user/register", formData)
       .then((response) => {
-        cogoToast.success("Thanks for Registering");
-        reDirect();
+        if (response.data.emailError) {
+          cogoToast.error(response.data.emailError);
+        } else if (response.data.mainError) {
+          cogoToast.error(response.data.mainError);
+        } else {
+          cogoToast.success("Thanks for Registering");
+          reDirect();
+        }
       })
       .catch((error) => {
         cogoToast.error(error.message); // server related error
