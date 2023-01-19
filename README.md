@@ -1,7 +1,6 @@
 # QUESTIONS MANAGER WEB APP
 
 Admin Cridentials :
-___________________
 
 EmailId : admin12345@gmail.com
 
