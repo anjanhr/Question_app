@@ -8,7 +8,18 @@ EmailId : admin12345@gmail.com
 Password : Admin@#12345
 ________________
 
-Student module :
+About the App :
+
+An application called Question Manager essentially serves as an online substitute for a traditional study group, where each question is carefully chosen by the teacher to address every student's doubt and aid in the clarification of each student's query based on the student's vote and rating for the questions.
+________________
+
+Link: https://drab-gold-elk-tie.cyclic.app/
+________________
+
+Packages : react, react-dom, react-router-dom, react-redux, redux, redux-thunk, axios, antd, cogo-toast, formik, yup, date-fns, particles-bg, express, mongoose, nodemon, bcryptjs, jsonwebtoken, cors, dotenv, lodash, multer.
+________________
+
+Student Features :
 
 1.	One can add a question.
 2.	All the questions have been updated with the student's name, date, and like.
@@ -20,7 +31,7 @@ Student module :
 8.	By default, the rating is set to 5. and one can rate up to 10.
 __________________________
 
-Admin ( Teacher ) module :
+Admin ( Teacher ) Features :
 
 1.	He can view total questions, answered questions, and not-answered questions.
 2.	He can make sure the question has been answered by checking and unchecking after the discussion.
