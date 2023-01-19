@@ -15,7 +15,9 @@ ________________
 Live Link: https://drab-gold-elk-tie.cyclic.app/
 ________________
 
-Packages : react, react-dom, react-router-dom, react-redux, redux, redux-thunk, axios, antd, cogo-toast, formik, yup, date-fns, particles-bg, express, mongoose, nodemon, bcryptjs, jsonwebtoken, cors, dotenv, lodash, multer.
+Packages : 
+
+react, react-dom, react-router-dom, react-redux, redux, redux-thunk, axios, antd, cogo-toast, formik, yup, date-fns, particles-bg, express, mongoose, nodemon, bcryptjs, jsonwebtoken, cors, dotenv, lodash, multer.
 ________________
 
 Student Features :
