@@ -13,7 +13,7 @@ About the App :
 An application called Question Manager essentially serves as an online substitute for a traditional study group, where each question is carefully chosen by the teacher to address every student's doubt and aid in the clarification of each student's query based on the student's vote and rating for the questions.
 ________________
 
-Link: https://drab-gold-elk-tie.cyclic.app/
+Live Link: https://drab-gold-elk-tie.cyclic.app/
 ________________
 
 Packages : react, react-dom, react-router-dom, react-redux, redux, redux-thunk, axios, antd, cogo-toast, formik, yup, date-fns, particles-bg, express, mongoose, nodemon, bcryptjs, jsonwebtoken, cors, dotenv, lodash, multer.
